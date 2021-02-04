@@ -3,7 +3,7 @@
 //
 
 import XCTest
-import FeedStoreChallenge
+@testable import FeedStoreChallenge
 
 class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	
@@ -20,9 +20,8 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	//  ***********************
 	
 	func test_retrieve_deliversEmptyOnEmptyCache() {
-		//		let sut = makeSUT()
-		//
-		//		assertThatRetrieveDeliversEmptyOnEmptyCache(on: sut)
+			let sut = makeSUT()
+		 assertThatRetrieveDeliversEmptyOnEmptyCache(on: sut)
 	}
 	
 	func test_retrieve_hasNoSideEffectsOnEmptyCache() {
@@ -93,8 +92,10 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	
 	// - MARK: Helpers
 	
-	private func makeSUT() -> FeedStore {
-		fatalError("Must be implemented")
+	private func makeSUT() -> CoreDataFeedStore {
+		let sut = CoreDataFeedStore()
+		sut.loadDataModel()
+		return sut
 	}
 	
 }
