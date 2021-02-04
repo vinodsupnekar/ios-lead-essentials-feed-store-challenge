@@ -67,7 +67,8 @@ class CoreDataFeedStore: FeedStore {
 	}
 	
 	func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-		saveLoadStore()
+		storeCache(imgs: feed.map{ CodableFeedImage(image: $0) }, date: timestamp)
+		saveCache()
 	}
 	
 	func retrieve(completion: @escaping RetrievalCompletion) {
@@ -97,7 +98,6 @@ class CoreDataFeedStore: FeedStore {
 			feed.imageInfo = img.description
 			feed.location = img.location
 			feed.url = img.url
-			saveLoadStore()
 		}
 	}
 	
@@ -117,7 +117,7 @@ class CoreDataFeedStore: FeedStore {
 		}
 	}
 	
-	func saveLoadStore() {
+	func saveCache() {
 		saveContext(backgroundContext: persistentContainer.viewContext)
 	}
 	
