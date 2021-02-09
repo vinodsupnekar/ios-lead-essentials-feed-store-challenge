@@ -48,9 +48,10 @@ extension FeedStoreSpecs where Self: XCTestCase {
 	}
 	
 	func assertThatInsertOverridesPreviouslyInsertedCacheValues(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
-		insert((uniqueImageFeed(), Date()), to: sut)
+		let feeds = uniqueImageFeed()
+		insert((feeds, Date()), to: sut)
 		
-		let latestFeed = uniqueImageFeed()
+		let latestFeed = feeds
 		let latestTimestamp = Date()
 		insert((latestFeed, latestTimestamp), to: sut)
 		

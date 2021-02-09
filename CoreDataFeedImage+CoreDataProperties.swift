@@ -21,7 +21,7 @@ extension CoreDataFeedImage {
     @NSManaged public var location: String?
     @NSManaged public var imageInfo: String?
     @NSManaged public var ss: NSObject?
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: UUID
     @NSManaged public var date: Date?
 
 }

@@ -13,4 +13,8 @@ import CoreData
 @objc(CoreDataFeedImage)
 public class CoreDataFeedImage: NSManagedObject {
 
+//	static func fetchRequestLocal() -> NSFetchRequest<NSFetchRequestResult> {
+//		let fetchRequest: NSFetchRequest<CoreDataFeedImage> = NSFetchRequest<CoreDataFeedImage>(entityName: "\(self)")
+//		return fetchRequest
+//	}
 }
