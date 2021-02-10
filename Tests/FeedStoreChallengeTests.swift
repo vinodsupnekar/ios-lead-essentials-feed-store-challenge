@@ -19,40 +19,10 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	//
 	//  ***********************
 	
-//	override class func setUp() {
-//		setUpEmptyStore()
-//	}
-//
-//	override class func tearDown() {
-//		undoStoreSideEffects()
-//	}
-	
-	private func setUpEmptyStore() {
-//		deleteCache()
-	}
-	
-	private func undoStoreSideEffects() {
-//		deleteCache()
-	}
-	
-	private func deleteStoreSideEffects() {
-//		deleteCache()
-	}
-	
 	func deleteCache(_ sut: CoreDataFeedStore) {
-//		let sut = makeSUT()
-//		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreDataFeedImage")
-//
-//		let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-//		do {
-//			try sut.context.execute(batchDeleteRequest)
-////			completion(nil)
-//		} catch  {
-////			completion(error)
-//		}
-//		let sut = makeSUT()
+
+	 sut.context.perform {
 		do {
-//			let fetchRequest = CoreDataFeedImage.fetchRequestLocal()
 			let fetchRequest: NSFetchRequest<CoreDataFeedImage> = NSFetchRequest<CoreDataFeedImage>(entityName: "CoreDataFeedImage")
 
 			guard let feeds = try? sut.context.fetch(fetchRequest) else {
@@ -65,6 +35,7 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 			try sut.context.save()
 		} catch  {
 		}
+	 }
 	}
 	
 	func test_retrieve_deliversEmptyOnEmptyCache() {

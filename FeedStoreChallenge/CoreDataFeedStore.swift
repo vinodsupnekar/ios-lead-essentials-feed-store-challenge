@@ -82,7 +82,7 @@ class CoreDataFeedStore: FeedStore {
 	func deleteCachedFeed(completion: @escaping DeletionCompletion) {
 		let selfForBlcok = self
 
-		queue.async( flags: .barrier) {
+		self.context.perform {
 			let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreDataFeedImage")
 			let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
@@ -97,14 +97,14 @@ class CoreDataFeedStore: FeedStore {
 	
 	func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
 		let selfForBlcok = self
-		queue.async(flags: .barrier) {
+		self.context.perform {
 			selfForBlcok.deleteCacheItems()
 			selfForBlcok.storeCache(imgs: feed.map{ CodableFeedImage(image: $0) }, date: timestamp, completion: completion)
 		}
 	}
 	
 	func retrieve(completion: @escaping RetrievalCompletion) {
-		queue.async {
+		self.context.perform {
 			if let result = self.fetchFeedImage() {
 				completion(.found(feed: result.localFeed, timestamp: result.timestamp))
 			}
