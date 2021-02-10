@@ -105,9 +105,7 @@ class CoreDataFeedStore: FeedStore {
 		}
 	}
 	
-	private func uniqueLocalImage() -> CodableFeedImage {
-		 return CodableFeedImage(image: LocalFeedImage(id: UUID(), description: "the first image feed", location: "Sangli", url: anyURL()))
-	}
+	
 	
 	private func storeCache( imgs : [CodableFeedImage],date: Date, completion: @escaping InsertionCompletion) {
 		for img in imgs {
@@ -166,11 +164,35 @@ class CoreDataFeedStore: FeedStore {
 	  return URL(string: "www.any-url.com")!
 	}
 	
+	private func uniqueLocalImage() -> CodableFeedImage {
+		 return CodableFeedImage(image: LocalFeedImage(id: UUID(), description: "the first image feed", location: "Sangli", url: anyURL()))
+	}
+	
 }
 
 extension CoreDataFeedStore {
 	@discardableResult
 	public func loadDataModel() -> NSPersistentContainer{
 		return self.persistentContainer
+	}
+	
+	func clearCache() {
+	 let selfLocal = self
+	 
+	self.context.perform {
+		do {
+			let fetchRequest: NSFetchRequest<CoreDataFeedImage> = NSFetchRequest<CoreDataFeedImage>(entityName: "CoreDataFeedImage")
+
+			guard let feeds = try? selfLocal.context.fetch(fetchRequest) else {
+				return
+			}
+
+			for feed in feeds {
+				selfLocal.context.delete(feed)
+			}
+			try selfLocal.context.save()
+		} catch  {
+		}
+	 }
 	}
 }
