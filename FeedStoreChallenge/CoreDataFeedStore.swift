@@ -16,7 +16,7 @@ enum CustomError : Error {
  
 class CoreDataFeedStore: FeedStore {
 	
-	struct CodableFeedImage: Equatable,Codable {
+	private struct CodableFeedImage: Equatable,Codable {
 		public let id: UUID
 		public let description: String?
 		public let location: String?
@@ -45,14 +45,8 @@ class CoreDataFeedStore: FeedStore {
 	}
 	
 	lazy var managedObjectModel: NSManagedObjectModel = {
-		
-//		if let modelURL = Bundle.main.url(forResource: "CoreDataImageFeed", withExtension: "momd"), let model = NSManagedObjectModel(contentsOf: modelURL) {
-//		return model
-//		}
-//		else {
 		let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for:  type(of: self))])!
 		return managedObjectModel
-//		}
 	}()
 		
 	
@@ -69,11 +63,8 @@ class CoreDataFeedStore: FeedStore {
 		})
 		return container
 	}()
-	
-	var feedImages: [NSManagedObject] = []
-	
+		
 	lazy var context : NSManagedObjectContext = {
-//		persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 		return persistentContainer.viewContext
 	}()
 	
@@ -113,16 +104,12 @@ class CoreDataFeedStore: FeedStore {
 			}
 		}
 	}
-
-	func anyURL() -> URL {
-	  return URL(string: "www.any-url.com")!
-	}
 	
-	func uniqueLocalImage() -> CodableFeedImage {
+	private func uniqueLocalImage() -> CodableFeedImage {
 		 return CodableFeedImage(image: LocalFeedImage(id: UUID(), description: "the first image feed", location: "Sangli", url: anyURL()))
 	}
 	
-	func storeCache( imgs : [CodableFeedImage],date: Date, completion: @escaping InsertionCompletion) {
+	private func storeCache( imgs : [CodableFeedImage],date: Date, completion: @escaping InsertionCompletion) {
 		for img in imgs {
 			let feed =  CoreDataFeedImage(context: context)
 			feed.date = date
@@ -132,7 +119,6 @@ class CoreDataFeedStore: FeedStore {
 			feed.url = img.url
 			
 			do {
-//				context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 				try context.save()
 			} catch let error as NSError {
 				completion(error)
@@ -168,37 +154,17 @@ class CoreDataFeedStore: FeedStore {
 			for feed in feeds {
 				context.delete(feed)
 			}
-			context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-
 			try context.save()
 		} catch  {
 			print(error)
 		}
 	}
-	
-	func saveCache() {
-		saveContext(backgroundContext: persistentContainer.viewContext)
-	}
-	
-	
-	func saveContext(backgroundContext: NSManagedObjectContext? = nil) {
 		
-		context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-
-		guard context.hasChanges else {
-			return
-		}
-		
-		do {
-			try context.save()
-		} catch let error as NSError {
-			print("error \(error), \(error.userInfo)")
-		}
-	}
-	
-	
-	
 	// MARK:- Helper
+	
+	func anyURL() -> URL {
+	  return URL(string: "www.any-url.com")!
+	}
 	
 }
 
@@ -208,27 +174,3 @@ extension CoreDataFeedStore {
 		return self.persistentContainer
 	}
 }
-
-
-
-//func loadModelFromBundle() -> NSManagedObjectModel {
-//
-//		var str : URL = anyURL()
-//
-////		Bundle.
-////		for bundle in Bundle.allBundles {
-//
-////			if bundle.url(forResource: "FeedStoreModel", withExtension: ".xcdatamodeld") != nil {
-////				str == bundle.url(forResource: "FeedStoreModel", withExtension: ".xcdatamodeld")
-////			}
-////			guard str == bundle.path(forResource: "FeedStoreModel", ofType: ".momd")else {
-////				break
-////			}
-////		}
-////		let str = Bundle.main.path(forResource: "FeedStoreModel", ofType: ".momd")!
-////		let url = URL(string: str)
-//		let model = NSManagedObjectModel(contentsOf: str)
-////	let modelURL = Bundle.main.url(forResource:  "FeedStore", withExtension: ".momd")
-////	let model = NSManagedObjectModel(contentsOf: modelURL!)!
-//		return model!
-//	}
