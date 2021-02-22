@@ -21,8 +21,6 @@
 		FA68C97525D2AA80007D92DF /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68C97425D2AA80007D92DF /* FeedCacheTestHelpers.swift */; };
 		FA6954D225C2C7E30005ED90 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA655B4F25BAC39A008E7379 /* CoreDataFeedStore.swift */; };
 		FA6CF0AD25CC60F0006273E7 /* CoreDataImageFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF0AB25CC60F0006273E7 /* CoreDataImageFeed.xcdatamodeld */; };
-		FA6CF0B625CC61E4006273E7 /* CoreDataFeedImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF0B425CC61E4006273E7 /* CoreDataFeedImage+CoreDataClass.swift */; };
-		FA6CF0B725CC61E4006273E7 /* CoreDataFeedImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF0B525CC61E4006273E7 /* CoreDataFeedImage+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,12 +250,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA6CF0B725CC61E4006273E7 /* CoreDataFeedImage+CoreDataProperties.swift in Sources */,
 				FA6954D225C2C7E30005ED90 /* CoreDataFeedStore.swift in Sources */,
 				08CE2BA62285BCB600183A1B /* FeedStore.swift in Sources */,
 				FA6CF0AD25CC60F0006273E7 /* CoreDataImageFeed.xcdatamodeld in Sources */,
 				08CE2BA82285BCC600183A1B /* LocalFeedImage.swift in Sources */,
-				FA6CF0B625CC61E4006273E7 /* CoreDataFeedImage+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
