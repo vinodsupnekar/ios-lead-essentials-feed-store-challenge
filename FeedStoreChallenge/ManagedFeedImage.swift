@@ -6,7 +6,6 @@
 //  Copyright © 2021 Essential Developer. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
 @objc(ManagedFeedImage)
@@ -20,10 +19,6 @@ internal class ManagedFeedImage: NSManagedObject {
 }
 
 extension ManagedFeedImage {
-
-	@nonobjc public class func fetchRequest() -> NSFetchRequest<ManagedFeedImage> {
-		return NSFetchRequest<ManagedFeedImage>(entityName: "ManagedFeedImage")
-	}
 	
 	var local: LocalFeedImage {
 		return LocalFeedImage(id: id, description: imageDescription, location: location, url: url)
