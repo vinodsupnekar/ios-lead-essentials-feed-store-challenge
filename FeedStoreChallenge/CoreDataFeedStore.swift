@@ -14,19 +14,19 @@ enum CustomError : Error {
 	case fetchError
 }
  
-class CoreDataFeedStore: FeedStore {
+public class CoreDataFeedStore: FeedStore {
 
 	private let container: NSPersistentContainer
 	private let context: NSManagedObjectContext
 	
 	public init(storeURL: URL, bundle: Bundle = .main) throws {
-		NSPersistentContainer.load()
+
 		container = try NSPersistentContainer.load(modelName: "CoreDataImageFeed", storeURL: storeURL, in: bundle)
 		
 		context = container.newBackgroundContext()
 	}
 	
-	func deleteCachedFeed(completion: @escaping DeletionCompletion) {
+	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
 		
 		perform { context in
 			do {
@@ -43,7 +43,7 @@ class CoreDataFeedStore: FeedStore {
 		}
 	}
 	
-	func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
+	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
 
 		perform { context in
 			do {
@@ -59,12 +59,12 @@ class CoreDataFeedStore: FeedStore {
 		}
 	}
 	
-	func retrieve(completion: @escaping RetrievalCompletion) {
+	public func retrieve(completion: @escaping RetrievalCompletion) {
 		
 		perform {  context in
 			do {
 				if let cache = try ManagedCache.find(in: context) {
-					completion(.found(feed: cache.localFeed,timestamp: cache.timestamp!))
+					completion(.found(feed: cache.localFeed,timestamp: cache.timestamp))
 				}
 				else {
 					completion(.empty)
@@ -82,12 +82,6 @@ class CoreDataFeedStore: FeedStore {
 		context.perform {
 			action(context)
 		}
-	}
-	
-	// MARK:- Helper
-	
-	func anyURL() -> URL {
-	  return URL(string: "www.any-url.com")!
 	}
 	
 }
