@@ -21,7 +21,6 @@
 		FA66EFAD25E3EAFE00217C88 /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66EFAC25E3EAFE00217C88 /* ManagedFeedImage.swift */; };
 		FA66EFB125E3EB1000217C88 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66EFB025E3EB1000217C88 /* ManagedCache.swift */; };
 		FA66EFB525E3F5A300217C88 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66EFB425E3F5A300217C88 /* CoreDataHelper.swift */; };
-		FA68C97525D2AA80007D92DF /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68C97425D2AA80007D92DF /* FeedCacheTestHelpers.swift */; };
 		FA6954D225C2C7E30005ED90 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA655B4F25BAC39A008E7379 /* CoreDataFeedStore.swift */; };
 		FA6CF0AD25CC60F0006273E7 /* CoreDataImageFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF0AB25CC60F0006273E7 /* CoreDataImageFeed.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -55,7 +54,6 @@
 		FA66EFAC25E3EAFE00217C88 /* ManagedFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFeedImage.swift; sourceTree = "<group>"; };
 		FA66EFB025E3EB1000217C88 /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
 		FA66EFB425E3F5A300217C88 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
-		FA68C97425D2AA80007D92DF /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		FA6CF0AC25CC60F0006273E7 /* CoreDataImageFeed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataImageFeed.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +138,6 @@
 		FA68C97825D2AA8B007D92DF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				FA68C97425D2AA80007D92DF /* FeedCacheTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -273,7 +270,6 @@
 				08CE2BB02285BCE700183A1B /* FeedStoreSpecs.swift in Sources */,
 				084BB13C24FE50A10091C705 /* FeedStoreIntegrationTests.swift in Sources */,
 				08CE2BB12285BCE700183A1B /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
-				FA68C97525D2AA80007D92DF /* FeedCacheTestHelpers.swift in Sources */,
 				08CE2BAF2285BCE700183A1B /* XCTestCase+FeedStoreSpecs.swift in Sources */,
 				08CE2BB32285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
 				084BB13E24FE56830091C705 /* XCTestCase+FeedStoreHelpers.swift in Sources */,

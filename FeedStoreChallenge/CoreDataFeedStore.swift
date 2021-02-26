@@ -8,11 +8,6 @@
 
 import Foundation
 import CoreData
-
-enum CustomError : Error {
-	case noRecordFound
-	case fetchError
-}
  
 public class CoreDataFeedStore: FeedStore {
 
