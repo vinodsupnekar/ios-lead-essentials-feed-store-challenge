@@ -51,7 +51,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
 		let feeds = uniqueImageFeed()
 		insert((feeds, Date()), to: sut)
 		
-		let latestFeed = feeds
+		let latestFeed = uniqueImageFeed()
 		let latestTimestamp = Date()
 		insert((latestFeed, latestTimestamp), to: sut)
 		
