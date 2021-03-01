@@ -3,8 +3,7 @@
 //
 
 import XCTest
-@testable import FeedStoreChallenge
-
+import FeedStoreChallenge
 
 class FeedStoreIntegrationTests: XCTestCase {
 	

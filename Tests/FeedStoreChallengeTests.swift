@@ -3,7 +3,7 @@
 //
 
 import XCTest
-@testable import FeedStoreChallenge
+import FeedStoreChallenge
 
 class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	
@@ -99,7 +99,7 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 		let storeBundle = Bundle(for: CoreDataFeedStore.self)
 		let storeURL = URL(fileURLWithPath: "/dev/null")
 		let sut = try! CoreDataFeedStore(storeURL: storeURL,bundle: storeBundle)
-		trackMemoryLeaks(sut)
+		trackMemoryLeaks(sut,file: file,line: line)
 		return sut
 	}
 
